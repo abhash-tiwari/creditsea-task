@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import FileUpload from './components/FileUpload/FileUpload';
 import BasicDetails from './components/BasicDetails/BasicDetails';
 import ReportSummary from './components/ReportSummary/ReportSummary';
@@ -6,7 +6,18 @@ import CreditAccounts from './components/CreditAccounts/CreditAccounts';
 import styles from './App.module.css';
 
 const App = () => {
-  const [reportData, setReportData] = useState(null);
+  const [reportData, setReportData] = useState(() => {
+    const savedReport = localStorage.getItem('creditReport');
+    return savedReport ? JSON.parse(savedReport) : null;
+  });
+
+  useEffect(() => {
+    if (reportData) {
+      localStorage.setItem('creditReport', JSON.stringify(reportData));
+    } else {
+      localStorage.removeItem('creditReport');
+    }
+  }, [reportData]);
 
   const handleUploadSuccess = (data) => {
     setReportData(data);
