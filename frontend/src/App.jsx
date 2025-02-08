@@ -1,11 +1,43 @@
-import './App.css'
+import React, { useState } from 'react';
+import FileUpload from './components/FileUpload/FileUpload';
+import BasicDetails from './components/BasicDetails/BasicDetails';
+import ReportSummary from './components/ReportSummary/ReportSummary';
+import CreditAccounts from './components/CreditAccounts/CreditAccounts';
+import styles from './App.module.css';
 
-function App() {
+const App = () => {
+  const [reportData, setReportData] = useState(null);
+
+  const handleUploadSuccess = (data) => {
+    setReportData(data);
+  };
+
   return (
-    <>
-      <h1>Frontend Setup</h1>
-    </>
-  )
-}
+    <div className={styles.container}>
+      <div className={styles.content}>
+        <h1 className={styles.title}>Credit Report Dashboard</h1>
+        
+        {!reportData && (
+          <FileUpload onUploadSuccess={handleUploadSuccess} />
+        )}
 
-export default App
+        {reportData && (
+          <div className={styles.report}>
+            <BasicDetails details={reportData.basicDetails} />
+            <ReportSummary summary={reportData.reportSummary} />
+            <CreditAccounts accounts={reportData.creditAccounts} />
+            
+            <button
+              onClick={() => setReportData(null)}
+              className={styles.button}
+            >
+              Upload Another Report
+            </button>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default App;
