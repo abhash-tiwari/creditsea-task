@@ -1,4 +1,3 @@
-
 # CreditSea Fullstack Assignment
 
 ## Introduction
@@ -35,7 +34,6 @@ MongoDB installed locally or a cloud database (e.g., MongoDB Atlas)
 Clone the Repository
 ```bash
 $ git clone https://github.com/abhash-tiwari/creditsea-task
-$ cd creditsea-project
 ```
     
 Setup Backend
