@@ -34,7 +34,7 @@ MongoDB installed locally or a cloud database (e.g., MongoDB Atlas)
 #### Steps
 Clone the Repository
 ```bash
-$ git clone <repository-url>
+$ git clone https://github.com/abhash-tiwari/creditsea-task
 $ cd creditsea-project
 ```
     
