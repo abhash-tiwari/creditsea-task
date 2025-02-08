@@ -14,12 +14,8 @@ class UploadController {
       const filePath = req.file.path;
       const reportData = await XMLParserService.parseXMLFile(filePath);
       
-      //Create new report in MongoDB
       const report = new Report(reportData);
       await report.save();
-
-    //   //Clean up uploaded file
-    //   await fs.unlink(filePath);
 
       res.status(201).json({
         message: 'Report processed successfully',
