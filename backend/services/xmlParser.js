@@ -30,7 +30,7 @@ class XMLParserService {
         name: `${currentApplicant.First_Name || ''} ${currentApplicant.Last_Name || ''}`.trim(),
         mobilePhone: currentApplicant.MobilePhoneNumber || 'N/A',
         pan: currentApplicant.IncomeTaxPan || caisAccounts[0]?.CAIS_Holder_Details?.Income_TAX_PAN || 'N/A',
-        creditScore: 0
+        creditScore: parseInt(data.SCORE.BureauScore) || 0
       },
       
       reportSummary: {
