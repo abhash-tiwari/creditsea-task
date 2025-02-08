@@ -45,7 +45,7 @@ const FileUpload = ({ onUploadSuccess }) => {
       const formData = new FormData();
       formData.append('file', file);
 
-      const response = await fetch('http://localhost:5000/api/upload', {
+      const response = await fetch('https://creditsea-task-r3ne.onrender.com/api/upload', {
         method: 'POST',
         body: formData,
       });
